@@ -1,0 +1,22 @@
+{
+  "name": "js-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hello": "echo \"Hello\"",
+    "start": "http-server ./1-basic-html-js -p 8282",
+    "start-dev": "live-server --port=8282"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "jquery": "^3.6.1"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

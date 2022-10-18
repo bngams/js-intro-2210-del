@@ -1,0 +1,41 @@
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2022 by anonymous (http://jsbin.com/korivehero/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<style id="jsbin-css">
+.tab {
+  display: none;
+}
+
+button.opened {
+  background-color: blue;
+}
+</style>
+<html>
+  <body>
+    <div id="tabs">
+      Mes onglets
+      <button id="btn-tab1" onclick="openTab('1')">Onglet 1</button>
+      <button id="btn-tab2" onclick="openTab(2)">Onglet 2</button>
+    </div>
+    <div id="tabs-content">
+      <div id="tab1" class="tab">Onglet 1</div>
+      <div id="tab2" class="tab">Onglet 2</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  <script id="jsbin-javascript">
+function openTab(num) {
+  $(".tab.opened").hide();
+  $("button.opened").removeClass("opened");
+  $("#tab" + num).show("slow");
+  $("#tab" + num).addClass("opened");
+  $("#btn-tab" + num).addClass("opened");
+}
+</script>
+</body>
+</html>

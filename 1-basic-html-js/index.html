@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS  */
+
+        /* selector with tag */
+        h1 {
+            text-decoration: underline;
+        }
+
+        /* selector with id attr <element id=...> */
+        #hidr {
+           color: red; 
+        }
+
+        /* selector with class attr <element class=...> */
+        .dynamic-text {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, everyone</h1>
+
+    <button id="showr">Show</button>
+    <button id="hidr">Hide</button>
+    <input id="text-to-add-id" type="text" value="" name="text-to-add" placeholder="Type some text"/>
+    <button id="addr">Add</button>
+    <div class="dynamic-text">Hello 3,</div>
+    <div class="dynamic-text">how</div>
+    <div class="dynamic-text">are</div>
+    <div class="dynamic-text">you?</div>
+    <p class="dynamic-text">some paragraph</p>
+    
+    <!-- load jquery -->
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        // code jquery
+        // $() => jQuery()
+        // $(selector)
+        // #monid => balise html avec un attribut id=monid
+        // #hidr => balise html qui porte un id=hidr
+        $( "#hidr" ).click(() => {
+            $("div.dynamic-text").hide("slow");
+        });
+
+        // js equivalent
+        // document.querySelector("#hidr").addEventListener("click", () => {
+        //     document.querySelectorAll("div.dynamic-text").forEach( el => {
+        //         el.hidden=true;
+        //     });
+        // });
+
+        $( "#showr" ).click(function() {
+            $( "div" ).first().show( "fast", function showNext() {
+                $( this ).next( "div" ).show( "fast", showNext );
+            });
+        });
+        
+
+        // $() <=> jQuery()
+        // <element id="addr">
+        const addrSelector = "#addr";
+        $(addrSelector).click(() => {
+            const inputTextValue = $("input[name='text-to-add']").val();
+            $("<div class='dynamic-text'>" + inputTextValue + "<div>")
+                .insertBefore("p.dynamic-text");
+        });
+        
+    </script>
+</body>
+</html>
