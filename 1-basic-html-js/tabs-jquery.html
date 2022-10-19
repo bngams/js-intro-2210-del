@@ -28,14 +28,14 @@ button.opened {
       <div id="tab2" class="tab">Onglet 2</div>
     </div>
     <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-  <script id="jsbin-javascript">
-function openTab(num) {
-  $(".tab.opened").hide();
-  $("button.opened").removeClass("opened");
-  $("#tab" + num).show("slow");
-  $("#tab" + num).addClass("opened");
-  $("#btn-tab" + num).addClass("opened");
-}
-</script>
+    <script id="jsbin-javascript">
+      function openTab(num) {
+        $(".tab.opened").hide();
+        $("button.opened").removeClass("opened");
+        $("#tab" + num).show("slow");
+        $("#tab" + num).addClass("opened");
+        $("#btn-tab" + num).addClass("opened");
+      }
+    </script>
 </body>
 </html>

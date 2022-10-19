@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <div class="container">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <!--  -->
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content" id="myContent">
+            <!--  -->
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const menu = [ 
+            { title: "Home", id: "home"}, 
+            { title: "Profile", id: "profile"},
+            { title: "Messages", id: "messages"},
+            { title: "Settings", id: "settings"},
+        ];
+
+        const loadAndInitMenu = () => {
+            const req = new XMLHttpRequest();
+            req.onreadystatechange = () => {
+                if (req.readyState == 4 && req.status == 200) {
+                    console.log('res', req.responseText);
+                    const menu = JSON.parse(req.responseText); 
+                    initMenu(menu);
+                }
+            };
+            req.open('GET', 'http://localhost:3000/menus');
+            req.send();
+        }
+
+        const initMenu = (menuJSON) => {
+            const menu = $("#myTab");
+            const content = $("#myContent");
+            for(let menuItem of menuJSON) {
+                menu.append(`
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="${menuItem.id}-tab" data-toggle="tab" data-target="#${menuItem.id}" type="button" role="tab" aria-controls="${menuItem.id}" aria-selected="">${menuItem.title}</button>
+                    </li>
+                `);
+                content.append(`
+                    <div class="tab-pane" id="${menuItem.id}" role="tabpanel" aria-labelledby="${menuItem.id}-tab">My content for ${menuItem.id}...</div>
+                `);
+            }            
+        }
+
+        $(document).ready(() => {
+            loadAndInitMenu();
+        });
+
+    </script>
+  </body>
+</html>
