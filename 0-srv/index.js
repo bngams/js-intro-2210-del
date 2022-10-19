@@ -1,8 +1,12 @@
+// import a library from node_modules
 const express = require('express')
-var cors = require('cors')
+const cors = require('cors')
+
+// use express lib to start an app
 const app = express()
 const port = 3000
 
+// configure app with cors
 app.use(cors());
 
 // http://localhost:3000/
@@ -21,6 +25,7 @@ app.get('/menus', (req, res) => {
   res.send(menu);
 })
 
+// launch app
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

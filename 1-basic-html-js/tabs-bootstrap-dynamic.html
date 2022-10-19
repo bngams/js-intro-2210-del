@@ -31,23 +31,28 @@
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const menu = [ 
-            { title: "Home", id: "home"}, 
-            { title: "Profile", id: "profile"},
-            { title: "Messages", id: "messages"},
-            { title: "Settings", id: "settings"},
-        ];
+        
 
-        const loadAndInitMenu = () => {
+        const loadAndInitWithAJAXJS = () => {
+            // create objet
             const req = new XMLHttpRequest();
+            // configure request
             req.onreadystatechange = () => {
                 if (req.readyState == 4 && req.status == 200) {
                     console.log('res', req.responseText);
-                    const menu = JSON.parse(req.responseText); 
+                    const menu = JSON.parse(req.responseText);
+                    // we have this content now 
+                    // const menu = [ 
+                    //     { title: "Home", id: "home"}, 
+                    //     { title: "Profile", id: "profile"},
+                    //     { title: "Messages", id: "messages"},
+                    //     { title: "Settings", id: "settings"},
+                    // ];
                     initMenu(menu);
                 }
             };
             req.open('GET', 'http://localhost:3000/menus');
+            // send (or start request)
             req.send();
         }
 
@@ -67,7 +72,7 @@
         }
 
         $(document).ready(() => {
-            loadAndInitMenu();
+            loadAndInitWithAJAXJS();
         });
 
     </script>
